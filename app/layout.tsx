@@ -1,6 +1,9 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import '../app/styles/tailwind.css'
+import { Layout } from './components/Layout'
+import { Providers } from './providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +19,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="flex h-full bg-zinc-50 dark:bg-black">
+        <Providers>
+          <div className="flex w-full">
+            <Layout>
+              {children}
+            </Layout>
+          </div>
+        </Providers>
+      </body>
     </html>
   )
 }
